@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuntiBackendAPI2023s", "TuntiBackendAPI2023s\TuntiBackendAPI2023s.csproj", "{C6E09DF5-ED21-4CC0-88FD-DCF25B3D2B91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6E09DF5-ED21-4CC0-88FD-DCF25B3D2B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E09DF5-ED21-4CC0-88FD-DCF25B3D2B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E09DF5-ED21-4CC0-88FD-DCF25B3D2B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E09DF5-ED21-4CC0-88FD-DCF25B3D2B91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A722407-EC06-4CD6-93EB-A2CCC0E1E6C8}
+	EndGlobalSection
+EndGlobal
