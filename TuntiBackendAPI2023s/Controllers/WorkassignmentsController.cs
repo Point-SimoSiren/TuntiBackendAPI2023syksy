@@ -44,11 +44,11 @@ namespace TuntiBackendAPI2023s.Controllers
                         {
                             // WA riviä muokataa nyt start tilanteessa
                             wa.InProgress = true;
-                            wa.WorkStartedAt = DateTime.Now.AddHours(1);
-                            wa.CompletedAt = wa.CompletedAt;
-                            wa.DeletedAt = wa.DeletedAt;
-                            wa.CreatedAt = wa.CreatedAt;
-                            wa.LastModifiedAt = wa.LastModifiedAt;
+                            wa.WorkStartedAt = DateTime.Now.AddHours(-1);
+                            //wa.CompletedAt = wa.CompletedAt;
+                            //wa.DeletedAt = wa.DeletedAt;
+                            //wa.CreatedAt = wa.CreatedAt;
+                            //wa.LastModifiedAt = wa.LastModifiedAt;
                             db.SaveChanges();
                         }
                     }
@@ -64,8 +64,8 @@ namespace TuntiBackendAPI2023s.Controllers
                     ts.IdCustomer = wa.IdCustomer;
                     ts.IdWorkAssignment = op.WorkAssignmentID;
                     ts.Comments = op.Comment;
-                    ts.CreatedAt = DateTime.Now.AddHours(1);
-                    ts.StartTime = DateTime.Now.AddHours(1);
+                    ts.CreatedAt = DateTime.Now.AddHours(-1);
+                    ts.StartTime = DateTime.Now.AddHours(-1);
                     ts.Latitude = op.Latitude;
                     ts.Longitude = op.Longitude;
                     ts.Active = true;
@@ -80,16 +80,23 @@ namespace TuntiBackendAPI2023s.Controllers
                 {
                     // WA riviä muokataan nyt stop vaiheessa
                     WorkAssignment wa = db.WorkAssignments.Find(op.WorkAssignmentID);
+
+                    if (wa.InProgress != true) {
+
+                        return false;
+                    }
+                    // Jos työ on aloitettu niin voidaan jatkaa lopetusrutiinia:
+
                     wa.InProgress = false;
                     wa.Completed = true;
-                    wa.CompletedAt = DateTime.Now.AddHours(1);
+                    wa.CompletedAt = DateTime.Now.AddHours(-1);
                     db.SaveChanges();
 
                     // Start tilanteessa luotua timesheet riviä muokataan nyt stop vaiheessa
                     Timesheet ts = db.Timesheets.Where(ts => ts.IdWorkAssignment == wa.IdWorkAssignment).FirstOrDefault();
                     ts.Comments = op.Comment;
                     ts.Latitude = op.Latitude;
-                    ts.StopTime = DateTime.Now.AddHours(1);
+                    ts.StopTime = DateTime.Now.AddHours(-1);
                     ts.Longitude = op.Longitude;
 
                     db.SaveChanges();
